@@ -1,0 +1,29 @@
+#btn-submit {
+    width: 300px;
+    font-size: 20px;
+  }
+  
+  .btn-type-raw {
+    width: 100px;
+    background: transparent;
+    border: none;
+    color: #2c71eb;
+    font-weight: 500;
+  
+    &:active {
+      border: none;
+      outline-style: none;
+    }
+    &.active {
+      color: gray;
+    }
+  }
+  
+  .file-raw,
+  .text-raw,
+  .url-raw {
+    &.active {
+      display: none;
+    }
+  }
+  

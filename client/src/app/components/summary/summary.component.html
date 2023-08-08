@@ -1,0 +1,108 @@
+<div class="summary-container">
+  <div>
+    <div class="jumbotron text-center my-4">
+      <h1>TÓM TẮT VĂN BẢN TIẾNG VIỆT</h1>
+      <p>Sử dụng Word2vec và thuật toán K-mean</p>
+    </div>
+    <div class="container bg-light py-2 d-flex justify-content-between">
+      <form target="_self" name="summarization-form" class="w-100 mx-5 my-3">
+        <div class="w-100 d-flex justify-content-center">
+          <button
+            type="button"
+            class="btn btn-info"
+            id="btn-submit"
+            (click)="(onSubmitForm)"
+          >
+            Tóm tắt
+          </button>
+        </div>
+        <div class="w-100 d-flex justify-content-center align-items-center">
+          <button
+            type="button"
+            class="btn-type-raw btn m-3"
+            [class.active]="isValueActive"
+            (click)="toggleValueActive()"
+          >
+            Văn bản
+          </button>
+          <span class="m-3">|</span>
+          <button
+            type="button"
+            class="btn-type-raw btn m-3"
+            [class.active]="!isValueActive"
+            (click)="toggleValueActiveURL()"
+          >
+            URL
+          </button>
+        </div>
+        <div class="raw-options">
+          <div class="form-group">
+            <div class="url-raw my-3" [class.active]="!isValueActive">
+              <input
+                type="text"
+                class="form-control"
+                id="url-summarization"
+                placeholder="URL trang web"
+              />
+            </div>
+            <div class="file-raw my-3" [class.active]="isValueActive">
+              <input
+                type="file"
+                class="form-control"
+                id="file"
+                name="file"
+                (change)="onFileChange($event)"
+              />
+            </div>
+          </div>
+          <div class="w-100 d-flex justify-content-between my-5">
+            <div class="text-center text-raw" [class.active]="isValueActive">
+              <div class="text-center">
+                <h3>Văn bản</h3>
+              </div>
+              <div>
+                <textarea
+                  class="form-control"
+                  rows="10"
+                  cols="60"
+                  id="input"
+                  name="input"
+                  [(ngModel)]="formData.raw"
+                ></textarea>
+              </div>
+            </div>
+            <div class="text-center">
+              <div class="text-center">
+                <h3>Tóm tắt</h3>
+              </div>
+              <div>
+                <textarea
+                  class="form-control"
+                  rows="10"
+                  [cols]="isValueActive ? 160 : 60"
+                  id="output"
+                  name="output"
+                  readonly
+                  [(ngModel)]="formData.summary"
+                >
+                </textarea>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-options">
+          <div class="form-group m-3">
+            <label for="quantityinput">Số câu đầu vào của đoạn văn</label>
+            <input
+              type="number"
+              class="form-control"
+              id="quantityinput"
+              name="quantityinput"
+            />
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
